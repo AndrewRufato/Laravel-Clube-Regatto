@@ -70,8 +70,8 @@ class PremioController extends Controller
             $user->save();
 
             $emailsDestino = [
-                'email1@seudominio.com',
-                'email2@seudominio.com',
+                'clube@moveisplanejadosregatto.com.br',
+                'clube@moveisplanejadosregatto.com.br',
             ];
 
             Mail::send('emails.resgate-premio', [

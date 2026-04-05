@@ -10,7 +10,7 @@ use App\Http\Controllers\PremioCreateController;
 use App\Http\Controllers\PremioController;
 use App\Http\Controllers\MembroAdminController;
 use App\Http\Controllers\CadastroSolicitacaoController;
-
+use Illuminate\Support\Facades\Artisan;
 /*
 |--------------------------------------------------------------------------
 | HOME / LANDING
@@ -110,6 +110,14 @@ Route::prefix('clube')->middleware('auth')->group(function () {
 |--------------------------------------------------------------------------
 */
 
+Route::get('/migrate', function () {
+    Artisan::call('migrate', [
+        '--force' => true
+    ]);
+
+    return 'Migrations executadas!';
+});
+
 Route::prefix('clube')
     ->middleware(['auth', 'admin'])
     ->group(function () {
@@ -150,3 +158,6 @@ Route::prefix('clube')
             ->name('cadastros.solicitacoes.aprovarAdmin');
 
     });
+
+
+    
